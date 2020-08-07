@@ -1,39 +1,33 @@
 import React, { useEffect } from "react";
 const { kakao } = window;
-export default function Map() {
+export default function Map({ stations }) {
   useEffect(() => {
     const container = document.getElementById("map");
     const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
-      level: 3,
+      center: new kakao.maps.LatLng(37.524, 126.987284),
+      level: 8,
     };
     const map = new kakao.maps.Map(container, options);
 
-    var positions = [
-      {
-        title: "카카오",
-        latlng: new kakao.maps.LatLng(33.450705, 126.570677),
-      },
-      {
-        title: "생태연못",
-        latlng: new kakao.maps.LatLng(33.450936, 126.569477),
-      },
-      {
-        title: "텃밭",
-        latlng: new kakao.maps.LatLng(33.450879, 126.56994),
-      },
-      {
-        title: "근린공원",
-        latlng: new kakao.maps.LatLng(33.451393, 126.570738),
-      },
-    ];
-
+    let positions = [];
+    for (let i = 0; i < stations.length; i++) {
+      positions[i] = {
+        title: stations[i].stationName,
+        latlng: new kakao.maps.LatLng(
+          stations[i].stationLatitude,
+          stations[i].stationLongitude
+        ),
+        stationId: stations[i].stationId,
+        rackTotCnt: stations[i].rackTotCnt,
+        parkingBikeTotCnt: stations[i].parkingBikeTotCnt,
+      };
+    }
     var imageSrc =
       "https://cdn.pixabay.com/photo/2019/10/13/22/00/bike-4547306_640.png";
 
     for (let i = 0; i < positions.length; i++) {
       // 마커 이미지의 이미지 크기 입니다
-      const imageSize = new kakao.maps.Size(35, 35);
+      const imageSize = new kakao.maps.Size(24, 24);
 
       // 마커 이미지를 생성합니다
       const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
@@ -47,11 +41,11 @@ export default function Map() {
         clickable: true,
       });
 
-      var iwContent = '<div style="padding:30px;">naver.com</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+      let iwContent = `<div style="padding:10px;">이름:${positions[i].title} </br> 총거치대:${positions[i].rackTotCnt}</br>이용가능대수:${positions[i].parkingBikeTotCnt} </div>`, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
         iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
       // 인포윈도우를 생성합니다
-      var infowindow = new kakao.maps.InfoWindow({
+      let infowindow = new kakao.maps.InfoWindow({
         content: iwContent,
         removable: iwRemoveable,
       });
@@ -68,8 +62,8 @@ export default function Map() {
     <div
       id="map"
       style={{
-        width: "500px",
-        height: "500px",
+        width: "100vw",
+        height: "100vh",
       }}
     ></div>
   );

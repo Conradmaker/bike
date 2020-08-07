@@ -2,11 +2,12 @@ const GET_LIST = "station/GET_LIST";
 const GET_LIST_SUCCESS = "station/GET_LIST_SUCCESS";
 const GET_LIST_ERROR = "station/GET_LIST_ERROR";
 
-export const getList = (callBack) => async (dispatch) => {
+export const getList = (callBack, callBack2) => async (dispatch) => {
   dispatch({ type: GET_LIST });
   try {
     const data = await callBack();
-    dispatch({ type: GET_LIST_SUCCESS, data });
+    const data2 = await callBack2();
+    dispatch({ type: GET_LIST_SUCCESS, data, data2 });
   } catch (e) {
     dispatch({ type: GET_LIST_ERROR, error: e });
   }
@@ -30,6 +31,7 @@ export default function station(state = initialState, action) {
       return {
         loading: false,
         data: action.data,
+        data2: action.data2,
         error: null,
       };
     case GET_LIST_ERROR:

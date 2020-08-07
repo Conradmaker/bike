@@ -7,7 +7,6 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reduxThunk from "redux-thunk";
 import rootReducer from "./modules";
-import Map from "./map";
 
 const store = createStore(
   rootReducer,
@@ -16,7 +15,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Map />
+    <App />
   </Provider>,
   document.getElementById("root")
 );
