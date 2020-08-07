@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bike-dda-reung-e/precache-manifest.1e8616e19cbaccaec83a0e4eed56d851.js"
+  "/bike-dda-reung-e/precache-manifest.f1591eefa8621ca7c3e9f968a0f9c81e.js"
 );
 
 self.addEventListener('message', (event) => {

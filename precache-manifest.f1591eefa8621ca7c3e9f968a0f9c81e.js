@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ca2fc1c12f204808cc99cf0eed5a1ba4",
+    "revision": "c160b20c7988e9717e8241af65b1f124",
     "url": "/bike-dda-reung-e/index.html"
   },
   {
