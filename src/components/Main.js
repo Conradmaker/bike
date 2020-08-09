@@ -16,13 +16,13 @@ const Loading = styled.div`
 
 async function fetchData() {
   const response = await axios.get(
-    "http://openapi.seoul.go.kr:8088/7856574d457968673934516650706d/json/bikeList/1/1000/"
+    "http://openapi.seoul.go.kr:8088/7a4b6e45447968673130384864564f54/json/bikeList/1/1000/"
   );
   return response.data;
 }
 async function fetchData2() {
   const response = await axios.get(
-    "http://openapi.seoul.go.kr:8088/7856574d457968673934516650706d/json/bikeList/1001/2000/"
+    "http://openapi.seoul.go.kr:8088/7a4b6e45447968673130384864564f54/json/bikeList/1001/2000/"
   );
   return response.data;
 }
